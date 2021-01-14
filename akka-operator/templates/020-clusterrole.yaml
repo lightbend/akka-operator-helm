@@ -1,0 +1,111 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "akka-operator.fullname" . }}
+  labels:
+    {{- include "akka-operator.labels" . | nindent 4 }}
+rules:
+  # The akka-operator needs to access and manage the Akka Microservices CRD
+  - apiGroups:
+      - "akka.lightbend.com"
+    resources:
+      - akkamicroservices
+      - akkamicroservices/status
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - delete
+      - patch
+      - update
+  # The akka-operator needs to access and manage ServiceAccounts to isolate Roles for Akka Microservices
+  - apiGroups:
+      - ""
+    resources:
+      - serviceaccounts
+    verbs:
+      - get
+      - create
+      - delete
+      - patch
+      - update
+  # The akka-operator needs to access and manage Services to expose gRPC endpoints
+  - apiGroups:
+      - ""
+    resources:
+      - services
+      - services/status
+    verbs:
+      - get
+      - create
+      - delete
+      - patch
+      - update
+  # The akka-operator needs to access Pods to retrieve status updates
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+    verbs:
+      - get
+      - list
+      - watch
+  # The akka-operator needs to check that the CRDs exist
+  - apiGroups:
+    - "apiextensions.k8s.io"
+    resources:
+      - customresourcedefinitions
+    verbs:
+      - get
+      - list
+      - watch
+  # The akka-operator needs to manage secrets
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+    verbs:
+      - get
+      - create
+      - delete
+      - patch
+      - update
+  # The akka-operator needs to manage Roles and RoleBindings to enable the Akka Management Kubernetes API feature
+  - apiGroups:
+      - "rbac.authorization.k8s.io"
+    resources:
+      - roles
+      - rolebindings
+    verbs:
+      - get
+      - create
+      - delete
+      - patch
+      - update
+  # The akka-operator needs to access and manage Deployments for deployed Akka Microservices
+  - apiGroups:
+      - "apps"
+    resources:
+      - deployments
+      - deployments/scale
+      - deployments/status
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - delete
+      - patch
+      - update
+  # The akka-operator needs to create, list, and update Events for notable events in the operator
+  - apiGroups:
+      - "core"
+    resources:
+      - events
+    verbs:
+      - get
+      - list
+      - create
+      - patch
+      - update

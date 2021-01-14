@@ -1,0 +1,12 @@
+apiVersion: v2
+name: akka-operator
+description: Akka Operator
+
+# Akka Operator
+type: application
+
+# This is the chart version, which corresponds to the version of the Akka Operator.
+version: 1.0.0
+
+# This is the version number of the Akka Operator, being deployed.
+appVersion: 1.0.0
