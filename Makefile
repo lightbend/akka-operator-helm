@@ -4,7 +4,9 @@ CHART_DESTINATION_PATH = ./charts
 VERSION ?= "dev"
 
 chart:
-	yq e ".image.tag = \"${VERSION}\"" akka-operator/values.yaml
-	yq e ".version = \"${VERSION}\"" akka-operator/Chart.yaml
-	yq e ".appVersion = \"${VERSION}\"" akka-operator/Chart.yaml
+	mkdir -p $(CHART_DESTINATION_PATH)
+	yq e -i ".image.tag = \"${VERSION}\"" akka-operator/values.yaml
+	yq e -i ".version = \"${VERSION}\"" akka-operator/Chart.yaml
+	yq e -i ".appVersion = \"${VERSION}\"" akka-operator/Chart.yaml
 	helm package $(CHART_PATH) -d $(CHART_DESTINATION_PATH)
+	helm repo index .
