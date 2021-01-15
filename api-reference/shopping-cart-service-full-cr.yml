@@ -1,0 +1,65 @@
+apiVersion: "v1"
+kind: "Namespace"
+metadata:
+  name: "akka-demo"
+---
+apiVersion: "akka.lightbend.com/v1"
+kind: "AkkaMicroservice"
+metadata:
+  name: "shopping-cart-service"
+  namespace: "akka-demo"
+spec:
+  replicas: 3
+  image: "docker.io/patriknw/shopping-cart-service:20201124-120910-e6028e0"
+  imagePullPolicy: "IfNotPresent"
+  akkaManagementPort: "8558"
+  grpcPort: "8101"
+  httpPort: "8080"
+  readinessProbe:
+    httpGet:
+      path: "/ready"
+      port: "http"
+  livenessProbe:
+    httpGet:
+      path: "/alive"
+      port: "http"
+  grpcIngress:
+    enabled: true
+    certificate: "arn:aws:acm:region:certificate/cert-id"
+  httpIngress:
+    enabled: true
+    certificate: "arn:aws:acm:region:certificate/cert-id"
+  configSecret:
+    secretName: "additional-config"
+  envSecret:
+    secretName: "additional-env"
+  secretVolumes:
+  - secretName: "additional-volume1"
+    mountPath: "/etc/volume1"
+  - secretName: "additional-volume2"
+    mountPath: "/etc/volume2"
+  javaOptions: "-Dakka.actor.default-blocking-io-dispatcher.thread-pool-executor.fixed-pool-size=10 -Xlog:gc"
+  resources:
+    limits:
+      memory: "512Mi"
+    requests:
+      memory: "512Mi"
+      cpu: "1000m"
+  kafka:
+    credentialsSecret: "shopping-cart-service-kafka-secret"
+    bootstrapServersKey: "bootstrapServers"
+  kafkaConfluentCloud:
+    credentialsSecret: "shopping-cart-service-kafka-confluent-secret"
+    bootstrapServerKey: "bootstrapServer"
+    apiKeyKey: "apiKey"
+    apiSecretKey: "apiSecret"
+  jdbc:
+    credentialsSecret: "shopping-cart-service-jdbc-secret"
+    connectionUrlKey: "connectionUrl"
+    usernameKey: "username"
+    passwordKey: "password"
+  cassandraDataStaxAstra:
+    credentialsSecret: "shopping-cart-service-astra-secret"
+    usernameKey: "username"
+    passwordKey: "password"
+    secureConnectBundleKey: "secureConnectBundle"
