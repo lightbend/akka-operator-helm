@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  akka-operator:
+  - apiVersion: v2
+    appVersion: dev
+    created: "2021-01-15T09:06:08.007802Z"
+    description: Akka Operator
+    digest: 8fe73599bfc7f75f50155365392d25ae7f2fb54d9811062c9c280a435816597a
+    name: akka-operator
+    type: application
+    urls:
+    - charts/akka-operator-dev.tgz
+    version: dev
+generated: "2021-01-15T09:06:08.004211Z"
