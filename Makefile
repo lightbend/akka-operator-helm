@@ -1,6 +1,5 @@
 CHART_PATH = ./akka-operator
 CHART_DESTINATION_PATH = ./charts
-
 VERSION ?= "dev"
 
 chart:
