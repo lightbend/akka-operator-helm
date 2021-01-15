@@ -3,12 +3,12 @@ entries:
   akka-operator:
   - apiVersion: v2
     appVersion: dev
-    created: "2021-01-14T17:31:46.008039Z"
+    created: "2021-01-15T09:06:08.007802Z"
     description: Akka Operator
-    digest: 45ff5606626fc6dffb70b4254eb04d169ad2168a1de55b702bc336dc9e33ffa3
+    digest: 8fe73599bfc7f75f50155365392d25ae7f2fb54d9811062c9c280a435816597a
     name: akka-operator
     type: application
     urls:
     - charts/akka-operator-dev.tgz
     version: dev
-generated: "2021-01-14T17:31:46.006061Z"
+generated: "2021-01-15T09:06:08.004211Z"
