@@ -3,37 +3,31 @@
 # Declare variables to be passed into your templates.
 
 image:
-
   repository: lightbend/akka-operator
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.0.0-1-5887b2e7-20210118-1419"
+  tag: "0.0.0-1-06ce9b65"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
 # Set as JAVA_TOOL_OPTIONS to allow overriding config
 java_tool_options: "-Xlog:gc -XX:InitialRAMPercentage=75 -XX:MaxRAMPercentage=75"
-
 serviceAccount:
   # Annotations to add to the service account
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: ""
-
 podAnnotations: {}
-
 podSecurityContext:
   fsGroup: 2000
-
 securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+# capabilities:
+#   drop:
+#   - ALL
+# readOnlyRootFilesystem: true
+# runAsNonRoot: true
+# runAsUser: 1000
 
 resources:
   limits:
@@ -41,10 +35,6 @@ resources:
   requests:
     cpu: 500m
     memory: 512Mi
-
 nodeSelector: {}
-
 tolerations: []
-
 affinity: {}
-

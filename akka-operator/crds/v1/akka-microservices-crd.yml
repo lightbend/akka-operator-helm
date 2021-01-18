@@ -134,6 +134,13 @@ spec:
                   type: string
                   description: 'Additional arguments to the application JVM. It will be added to the `JAVA_TOOL_OPTIONS` environment variable, which will be used by most JVM implementations.'
                   default: ""
+                env:
+                  type: array
+                  description: 'List of environment variables to set in the container.'
+                  items:
+                    type: object
+                    x-kubernetes-preserve-unknown-fields: true
+                    description: 'EnvVar represents an environment variable present in a Container. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/'
                 resources:
                   type: object
                   description: 'ResourceRequirements describes the compute resource requirements.'

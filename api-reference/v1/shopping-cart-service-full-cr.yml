@@ -39,6 +39,11 @@ spec:
   - secretName: "additional-volume2"
     mountPath: "/etc/volume2"
   javaOptions: "-Dakka.actor.default-blocking-io-dispatcher.thread-pool-executor.fixed-pool-size=10 -Xlog:gc"
+  env:
+  - name: "DEMO_GREETING"
+    value: "Hello from the environment"
+  - name: "DEMO_FAREWELL"
+    value: "Such a sweet sorrow"
   resources:
     limits:
       memory: "512Mi"
