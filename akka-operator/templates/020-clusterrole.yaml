@@ -5,6 +5,15 @@ metadata:
   labels:
     {{- include "akka-operator.labels" . | nindent 4 }}
 rules:
+  - apiGroups:
+      - "metrics.k8s.io"
+    resources:
+      - pods
+    verbs:
+      - get
+      - list
+      - watch
+      - create
   # The akka-operator needs to access and manage the Akka Microservices CRD
   - apiGroups:
       - "akka.lightbend.com"
@@ -29,6 +38,14 @@ rules:
       - create
       - delete
       - patch
+      - update
+  - apiGroups:
+      - ""
+    resources:
+      - events
+    verbs:
+      - get
+      - create
       - update
   # The akka-operator needs to access and manage Services to expose gRPC endpoints
   - apiGroups:
@@ -98,11 +115,12 @@ rules:
       - delete
       - patch
       - update
-  # The akka-operator needs to create, list, and update Events for notable events in the operator
+  # The akka-operator needs to create, list, and update Events for notable events in the operator and ConfigMaps for Metering State
   - apiGroups:
       - "core"
     resources:
       - events
+      - configmaps
     verbs:
       - get
       - list
