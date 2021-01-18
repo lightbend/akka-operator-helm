@@ -54,10 +54,11 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 Create the name of the service account to use
 */}}
 {{- define "akka-operator.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "akka-operator.fullname" .) .Values.serviceAccount.name }}
+
+{{- if .Values.serviceAccount.name }}
+{{- .Values.serviceAccount.name }}
 {{- else }}
-{{- default "default" .Values.serviceAccount.name }}
+{{- default (include "akka-operator.fullname" .) .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
 
