@@ -6,7 +6,7 @@ image:
   repository: lightbend/akka-operator
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.0.0-1-e9bebdcd"
+  tag: "0.0.0-1-5887b2e7-20210118-1419"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
