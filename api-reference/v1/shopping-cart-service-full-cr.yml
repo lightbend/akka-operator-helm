@@ -15,14 +15,6 @@ spec:
   akkaManagementPort: "8558"
   grpcPort: "8101"
   httpPort: "8080"
-  readinessProbe:
-    httpGet:
-      path: "/ready"
-      port: "http"
-  livenessProbe:
-    httpGet:
-      path: "/alive"
-      port: "http"
   grpcIngress:
     enabled: true
     certificate: "arn:aws:acm:region:certificate/cert-id"

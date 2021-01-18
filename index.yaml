@@ -2,8 +2,18 @@ apiVersion: v1
 entries:
   akka-operator:
   - apiVersion: v2
+    appVersion: 0.0.0-1-ec374128-20210118-1206
+    created: "2021-01-18T12:06:32.053246811Z"
+    description: Akka Operator
+    digest: bdc1153288b80eeed68b24a50a6b0bc10d2e1f9641142b3386ad8962103291a7
+    name: akka-operator
+    type: application
+    urls:
+    - charts/akka-operator-0.0.0-1-ec374128-20210118-1206.tgz
+    version: 0.0.0-1-ec374128-20210118-1206
+  - apiVersion: v2
     appVersion: 0.0.0-1-5384894a
-    created: "2021-01-15T11:24:05.526114659Z"
+    created: "2021-01-18T12:06:32.052624109Z"
     description: Akka Operator
     digest: 4b06efe2b53aa7033066d68d6e915e3ea30c534cf4620a76fb786296bbb3345a
     name: akka-operator
@@ -13,7 +23,7 @@ entries:
     version: 0.0.0-1-5384894a
   - apiVersion: v2
     appVersion: 0.0.0-1-1368b228
-    created: "2021-01-15T11:24:05.525629847Z"
+    created: "2021-01-18T12:06:32.051106204Z"
     description: Akka Operator
     digest: d5af59b1fcabd0e9dd0436f2f1e1292206a3159cedfa10fa646b40d44a336c6c
     name: akka-operator
@@ -23,7 +33,7 @@ entries:
     version: 0.0.0-1-1368b228
   - apiVersion: v2
     appVersion: dev
-    created: "2021-01-15T11:24:05.526626272Z"
+    created: "2021-01-18T12:06:32.053846713Z"
     description: Akka Operator
     digest: 8fe73599bfc7f75f50155365392d25ae7f2fb54d9811062c9c280a435816597a
     name: akka-operator
@@ -31,4 +41,4 @@ entries:
     urls:
     - charts/akka-operator-dev.tgz
     version: dev
-generated: "2021-01-15T11:24:05.524919728Z"
+generated: "2021-01-18T12:06:32.049977701Z"

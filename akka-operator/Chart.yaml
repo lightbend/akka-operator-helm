@@ -4,6 +4,6 @@ description: Akka Operator
 # Akka Operator
 type: application
 # This is the chart version, which corresponds to the version of the Akka Operator.
-version: 0.0.0-1-5384894a
+version: 0.0.0-1-ec374128-20210118-1206
 # This is the version number of the Akka Operator, being deployed.
-appVersion: 0.0.0-1-5384894a
+appVersion: 0.0.0-1-ec374128-20210118-1206
