@@ -34,6 +34,7 @@ spec:
                   description: 'Number of desired pods.'
                 image:
                   type: string
+                  description: 'Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images'
                 imagePullPolicy:
                   type: string
                   description: 'Image pull policy. One of Always, Never, IfNotPresent. No setting falls back to the container default. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images'
@@ -238,6 +239,8 @@ spec:
                     passwordKey:
                       type: string
                       default: "password"
+                  required:
+                    - credentialsSecret
                 cassandraDataStaxAstra:
                   type: object
                   description: 'Integration with DataStax Astra (Cloud-Native Cassandra-as-a-Service)'
