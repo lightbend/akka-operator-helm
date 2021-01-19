@@ -37,12 +37,23 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
-          # See akka.operator.common.HealthCheckFiles
+            - name: health-port
+              containerPort: 8558
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              port: health-port
+              path: "/ready"
+            periodSeconds: 10
+            initialDelaySeconds: 20
+            failureThreshold: 3
           livenessProbe:
-            exec:
-              command:
-                - cat
-                - /tmp/akka-platform-operator-alive.txt
+            httpGet:
+              port: health-port
+              path: "/alive"
+            periodSeconds: 10
+            initialDelaySeconds: 20
+            failureThreshold: 3
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
