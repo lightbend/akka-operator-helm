@@ -39,15 +39,7 @@ rules:
       - delete
       - patch
       - update
-  - apiGroups:
-      - ""
-    resources:
-      - events
-    verbs:
-      - get
-      - create
-      - update
-  # The akka-operator needs to access and manage Services to expose gRPC endpoints
+ # The akka-operator needs to access and manage Services to expose gRPC endpoints
   - apiGroups:
       - ""
     resources:
@@ -117,7 +109,7 @@ rules:
       - update
   # The akka-operator needs to create, list, and update Events for notable events in the operator and ConfigMaps for Metering State
   - apiGroups:
-      - "core"
+      - ""
     resources:
       - events
       - configmaps
