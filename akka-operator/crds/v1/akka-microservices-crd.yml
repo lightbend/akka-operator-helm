@@ -149,6 +149,17 @@ spec:
                     type: object
                     x-kubernetes-preserve-unknown-fields: true
                     description: 'EnvVar represents an environment variable present in a Container. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/'
+                updateStrategy:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                  description: |-
+                    The deployment strategy to use to replace existing pods with new ones.
+                    For more information see https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy
+                  default:
+                    type: 'RollingUpdate'
+                    rollingUpdate:
+                      maxSurge: '25%'
+                      maxUnavailable: '25%'
                 resources:
                   type: object
                   description: 'ResourceRequirements describes the compute resource requirements.'

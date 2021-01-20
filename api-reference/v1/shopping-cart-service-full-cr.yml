@@ -46,6 +46,11 @@ spec:
     value: "Hello from the environment"
   - name: "DEMO_FAREWELL"
     value: "Such a sweet sorrow"
+  updateStrategy:
+    rollingUpdate:
+      maxSurge: "25%"
+      maxUnavailable: "25%)"
+    type: "RollingUpdate"
   resources:
     limits:
       memory: "512Mi"
