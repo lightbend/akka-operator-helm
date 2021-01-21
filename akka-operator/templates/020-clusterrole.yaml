@@ -107,7 +107,7 @@ rules:
       - delete
       - patch
       - update
-  # The akka-operator needs to create, list, and update Events for notable events in the operator and ConfigMaps for Metering State
+  # The akka-operator needs to create, list, and update Events for notable events in the operator and ConfigMaps (+delete) for Metering State
   - apiGroups:
       - ""
     resources:
@@ -117,5 +117,6 @@ rules:
       - get
       - list
       - create
+      - delete
       - patch
       - update
