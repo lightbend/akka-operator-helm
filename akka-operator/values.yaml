@@ -7,7 +7,7 @@ image:
   repository: 709825985650.dkr.ecr.us-east-1.amazonaws.com/lightbend/akka-operator
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.4.1-1-43b18ff5-NIGHTLY20210121"
+  tag: "0.0.0-1-7c205d36"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""

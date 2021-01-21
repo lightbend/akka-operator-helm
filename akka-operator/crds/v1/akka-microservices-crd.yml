@@ -149,7 +149,7 @@ spec:
                     type: object
                     x-kubernetes-preserve-unknown-fields: true
                     description: 'EnvVar represents an environment variable present in a Container. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/'
-                updateStrategy:
+                deploymentStrategy:
                   type: object
                   x-kubernetes-preserve-unknown-fields: true
                   description: |-

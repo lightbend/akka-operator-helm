@@ -46,7 +46,7 @@ spec:
     value: "Hello from the environment"
   - name: "DEMO_FAREWELL"
     value: "Such a sweet sorrow"
-  updateStrategy:
+  deploymentStrategy:
     rollingUpdate:
       maxSurge: "25%"
       maxUnavailable: "25%)"
