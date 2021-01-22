@@ -1,3 +1,5 @@
+# Force to use this chart with Helm 3
+# https://helm.sh/docs/topics/charts/#the-apiversion-field
 apiVersion: v2
 name: akka-operator
 description: Akka Operator in Akka Cloud Platform
