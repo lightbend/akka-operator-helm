@@ -1,10 +1,10 @@
-# Akka Platform Operator Charts
+# Akka Cloud Platform Helm Charts
 
-This repository contains Helm charts for the [Akka Platform Operator](https://developer.lightbend.com/docs/akka-platform-guide/deployment/).
+This repository contains Helm charts for the [Akka Cloud Platform](https://developer.lightbend.com/docs/akka-platform-guide/deployment/).
 
 ## Maintenance
 
-Enterprise Suite Team <es-all@lightbend.com>
+Akka Cloud Platform Team <cloud-marketplace@lightbend.com>
 
 ## License
 
