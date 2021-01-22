@@ -1,6 +1,6 @@
 apiVersion: v2
 name: akka-operator
-description: Akka Operator
+description: Akka Operator in Akka Cloud Platform
 # Akka Operator
 type: application
 # This is the chart version, which corresponds to the version of the Akka Operator.
