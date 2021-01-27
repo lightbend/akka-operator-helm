@@ -1,6 +1,6 @@
 # Akka Cloud Platform Helm Charts
 
-This repository contains Helm charts for the [Akka Cloud Platform](https://developer.lightbend.com/docs/akka-platform-guide/deployment/).
+This repository contains Helm charts for the [Akka Cloud Platform](https://developer.lightbend.com/docs/akka-platform-guide/).
 
 ## Maintenance
 
