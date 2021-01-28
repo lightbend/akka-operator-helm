@@ -123,6 +123,12 @@ spec:
                   properties:
                     secretName:
                       type: string
+                logbackSecret:
+                  type: object
+                  description: 'Name of Secret with entries that will be used as logback.xml configuration.'
+                  properties:
+                    secretName:
+                      type: string
                 secretVolumes:
                   type: array
                   description: 'List of Secrets with entries that will be mounted as files in the mountPath directory.'

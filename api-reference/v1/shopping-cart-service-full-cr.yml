@@ -35,6 +35,8 @@ spec:
     secretName: "additional-config"
   envSecret:
     secretName: "additional-env"
+  logbackSecret:
+    secretName: "logback"
   secretVolumes:
   - secretName: "additional-volume1"
     mountPath: "/etc/volume1"
