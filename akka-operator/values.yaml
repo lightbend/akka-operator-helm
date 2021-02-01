@@ -38,3 +38,5 @@ resources:
 nodeSelector: {}
 tolerations: []
 affinity: {}
+cloudProvider:
+  name: "gcp"
