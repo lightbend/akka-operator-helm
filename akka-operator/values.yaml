@@ -38,5 +38,22 @@ resources:
 nodeSelector: {}
 tolerations: []
 affinity: {}
+
+# valid values:
+# - none (default)
+# - aws 
+# - gcp
+#
+# use `--set` in `helm install` to set from command line
+#
+# if (gcp && imageRepository == blank) {
+#   use default gcpRepo
+# } else if (aws && imageRepository == blank) {
+#   use default awsRepo
+# } else {
+#   use imageRepository (e.g. will fail if blank)
+# }
+#
+# default aws and gcp repos will be present in the script for `helm install`
 cloudProvider:
-  name: "gcp"
+  name: "none"
