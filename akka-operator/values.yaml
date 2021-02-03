@@ -40,7 +40,7 @@ tolerations: []
 affinity: {}
 
 # valid values:
-# - none (default)
+# - nil (default)
 # - aws 
 # - gcp
 #
@@ -55,5 +55,5 @@ affinity: {}
 # }
 #
 # default aws and gcp repos will be present in the script for `helm install`
-cloudProvider:
-  name: "none"
+provider:
+  name: nil
