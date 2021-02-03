@@ -18,7 +18,7 @@ data:
     # Metric names should match verbatim the identifiers created
     # during pricing setup.
     metrics:
-    - name: requests
+    - name: akka_cloud_platform_cpu_time
       type: int
 
       # The endpoints section of a metric defines which endpoints the
