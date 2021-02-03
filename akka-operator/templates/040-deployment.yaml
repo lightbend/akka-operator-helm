@@ -1,4 +1,4 @@
-{{- if eq .Values.cloudProvider.name "gcp" }}
+{{- if eq .Values.provider.name "gcp" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -65,7 +65,6 @@ data:
         # provided during onboarding.
         serviceName: my-application.mp-my-company.appspot.com
         consumerId: $AGENT_CONSUMER_ID  # From the reporting secret.
-      
 
     # The sources section lists metric data sources run by the agent
     # itself. The currently-supported source is 'heartbeat', which
@@ -114,7 +113,13 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
+          {{- if and (eq .Values.provider.name "aws") (not .Values.image.repository) }}
+          image: "{{ .Values.defaultAWSRepository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          {{- else if and (eq .Values.provider.name "gcp") (not .Values.image.repository) }}
+          image: "{{ .Values.defaultGCPRepository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          {{- else }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          {{- end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
@@ -154,6 +159,32 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
+        {{- if eq .Values.provider.name "gcp" }}
+        - name: ubbagent
+          image: $imageUbbagent
+          env:
+          - name: AGENT_CONFIG_FILE
+            value: "/etc/ubbagent/config.yaml"
+          - name: AGENT_LOCAL_PORT
+            value: "4567"
+          - name: AGENT_ENCODED_KEY
+            valueFrom:
+              secretKeyRef:
+                name: $reportingSecret
+                key: reporting-key
+          - name: AGENT_CONSUMER_ID
+            valueFrom:
+              secretKeyRef:
+                name: $reportingSecret
+                key: consumer-id
+          volumeMounts:
+          - name: ubbagent-config
+            mountPath: /etc/ubbagent
+      volumes:
+        - name: ubbagent-config
+          configMap:
+            name: ubbagent-config
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

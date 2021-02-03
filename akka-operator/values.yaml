@@ -2,8 +2,10 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+defaultAWSRepository: 709825985650.dkr.ecr.us-east-1.amazonaws.com/lightbend/akka-cloud-platform
+defaultGCPRepository: gcr.io/lightbend-public/akka-cloud-platform
 image:
-  repository: 709825985650.dkr.ecr.us-east-1.amazonaws.com/lightbend/akka-cloud-platform
+  repository: false
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "0.4.5"
@@ -40,20 +42,20 @@ tolerations: []
 affinity: {}
 
 # valid values:
-# - nil (default)
-# - aws 
+# - false (default)
+# - aws
 # - gcp
 #
 # use `--set` in `helm install` to set from command line
 #
-# if (gcp && imageRepository == blank) {
+# if (gcp && imageRepository == false) {
 #   use default gcpRepo
-# } else if (aws && imageRepository == blank) {
+# } else if (aws && imageRepository == false) {
 #   use default awsRepo
 # } else {
-#   use imageRepository (e.g. will fail if blank)
+#   use imageRepository (e.g. will fail if false)
 # }
 #
 # default aws and gcp repos will be present in the script for `helm install`
 provider:
-  name: nil
+  name: false
