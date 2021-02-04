@@ -1,3 +1,4 @@
+{{- if .Values.provider.name }}
 {{- if eq .Values.provider.name "gcp" }}
 apiVersion: v1
 kind: ConfigMap
@@ -79,6 +80,7 @@ data:
         value:
           int64Value: 60
 {{- end }}
+{{- end }}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -113,10 +115,19 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          {{- if and (eq .Values.provider.name "aws") (not .Values.image.repository) }}
+          # No provider name found
+          {{- if (not .Values.provider.name) }}
+          image: {{ fail "A valid .Values.provider.name entry required! Valid values: gcp, aws" }}
+          # provider aws and repository not set: set aws default repository
+          {{- else if and (eq .Values.provider.name "aws") (not .Values.image.repository) }}
           image: "{{ .Values.defaultAWSRepository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          # provider gcp and repository not set: set gcp default repository
           {{- else if and (eq .Values.provider.name "gcp") (not .Values.image.repository) }}
           image: "{{ .Values.defaultGCPRepository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          # provider set to something else but no repository found
+          {{- else if (not .Values.image.repository) }}
+          image: {{ fail "A valid .Values.image.repository entry required!" }}
+          # set to the repository found
           {{- else }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           {{- end }}
@@ -159,6 +170,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
+        {{- if .Values.provider.name }}
         {{- if eq .Values.provider.name "gcp" }}
         - name: ubbagent
           image: $imageUbbagent
@@ -184,6 +196,7 @@ spec:
         - name: ubbagent-config
           configMap:
             name: ubbagent-config
+        {{- end }}
         {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
