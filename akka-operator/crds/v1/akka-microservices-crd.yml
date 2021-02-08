@@ -310,6 +310,22 @@ spec:
                 oldestPodStartTime:
                   type: string
                   description: 'The start time of the oldest pod.'
+                akkaClusterStatus:
+                  type: object
+                  description: 'Status summary about the Akka Cluster members.'
+                  properties:
+                    upMembers:
+                      description: 'Number of Akka Cluster members in UP state.'
+                      type: integer
+                    nonUpMembers:
+                      description: 'Number of Akka Cluster members in other states than UP.'
+                      type: integer
+                    unreachableMembers:
+                      description: 'Number of unreachable members in the Akka Cluster (as seen from the queried node).'
+                      type: integer
+                    lastChangeTime:
+                      description: 'Timestamp when the Akka Cluster status summary last changed.'
+                      type: string
       # Columns in kubectl get
       additionalPrinterColumns:
         - name: Phase
@@ -327,6 +343,17 @@ spec:
         - name: Age
           type: date
           jsonPath: .status.oldestPodStartTime
+        - name: Up
+          type: integer
+          jsonPath: .status.akkaClusterStatus.upMembers
+        - name: Non-Up
+          type: integer
+          jsonPath: .status.akkaClusterStatus.nonUpMembers
+          priority: 1 # only in wide view
+        - name: Unreachable
+          type: integer
+          jsonPath: .status.akkaClusterStatus.unreachableMembers
+          priority: 1 # only in wide view
         - name: Message
           type: string
           jsonPath: .status.message
