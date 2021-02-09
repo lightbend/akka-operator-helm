@@ -175,7 +175,7 @@ spec:
         - name: ubbagent
           # hardcoded - need to be replaced with $imageUbbagent which
           # will come from schema.yaml
-          image: $imageUbbagent
+          image: "{{ .Values.imageUbbagent.repository }}:{{ .Values.imageUbbagent.tag | default .imageUbbagent.AppVersion }}"
           env:
           - name: AGENT_CONFIG_FILE
             value: "/etc/ubbagent/config.yaml"
