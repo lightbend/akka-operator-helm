@@ -173,8 +173,6 @@ spec:
         {{- if .Values.provider.name }}
         {{- if eq .Values.provider.name "gcp" }}
         - name: ubbagent
-          # hardcoded - need to be replaced with $imageUbbagent which
-          # will come from schema.yaml
           image: "{{ .Values.imageUbbagent.repository }}:{{ .Values.imageUbbagent.tag | default .Chart.AppVersion }}"
           env:
           - name: AGENT_CONFIG_FILE
