@@ -173,7 +173,7 @@ spec:
         {{- if .Values.provider.name }}
         {{- if eq .Values.provider.name "gcp" }}
         - name: ubbagent
-          image: "{{ .Values.imageUbbagent.repository }}:{{ .Values.imageUbbagent.tag | default .Chart.AppVersion }}"
+          image: "gcr.io/lightbend-public/akka-cloud-platform/ubbagent:{{ .Values.imageUbbagent.tag | default .Chart.AppVersion }}"
           env:
           - name: AGENT_CONFIG_FILE
             value: "/etc/ubbagent/config.yaml"
