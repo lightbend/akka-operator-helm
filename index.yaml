@@ -3,7 +3,7 @@ entries:
   akka-operator:
   - apiVersion: v2
     appVersion: 1.0.1
-    created: "2021-02-11T01:18:01.259748+05:30"
+    created: "2021-02-11T16:24:57.823718+05:30"
     description: Akka Operator in Akka Cloud Platform
     digest: 057fe6b9c5820eab7523540c2f2688ad4dfac77bfb1f8116760bcdc27543803c
     name: akka-operator
@@ -13,9 +13,9 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: 0.4.7
-    created: "2021-02-11T01:18:01.25871+05:30"
+    created: "2021-02-11T16:24:57.822572+05:30"
     description: Akka Operator in Akka Cloud Platform
-    digest: dc2140b7bc6c87c1ef80927909940e2a23ccbd82fabc6488b958e2d174d60a79
+    digest: 6f411a61cba40995565727cbf1c1de46f0dada202fc35bfaffe081b75bb20321
     name: akka-operator
     type: application
     urls:
@@ -23,7 +23,7 @@ entries:
     version: 0.4.7
   - apiVersion: v2
     appVersion: 0.4.6
-    created: "2021-02-11T01:18:01.258075+05:30"
+    created: "2021-02-11T16:24:57.821646+05:30"
     description: Akka Operator in Akka Cloud Platform
     digest: 3b9683a24bd87ded6b5fa28f005574ae60ac6b9c09987031c271e546eb8d51a9
     name: akka-operator
@@ -33,7 +33,7 @@ entries:
     version: 0.4.6
   - apiVersion: v2
     appVersion: 0.4.5
-    created: "2021-02-11T01:18:01.257048+05:30"
+    created: "2021-02-11T16:24:57.820658+05:30"
     description: Akka Operator in Akka Cloud Platform
     digest: ec0d91126abf2cbf0211e899738fa6a6fbc63c80276f15c01494ecc4b3da440d
     name: akka-operator
@@ -43,7 +43,7 @@ entries:
     version: 0.4.5
   - apiVersion: v2
     appVersion: 0.4.4
-    created: "2021-02-11T01:18:01.255744+05:30"
+    created: "2021-02-11T16:24:57.819722+05:30"
     description: Akka Operator in Akka Cloud Platform
     digest: 4005107497ddab5c2566ae8d12784f33ac4882fb649f3eaf8a3682f0371ddb13
     name: akka-operator
@@ -53,7 +53,7 @@ entries:
     version: 0.4.4
   - apiVersion: v2
     appVersion: 0.4.3
-    created: "2021-02-11T01:18:01.25489+05:30"
+    created: "2021-02-11T16:24:57.819052+05:30"
     description: Akka Operator in Akka Cloud Platform
     digest: 61abce03665b187f4295cae8b3d1ee7d6927a655e6cf5213f0c95053c1f472be
     name: akka-operator
@@ -63,7 +63,7 @@ entries:
     version: 0.4.3
   - apiVersion: v2
     appVersion: 0.4.2
-    created: "2021-02-11T01:18:01.254015+05:30"
+    created: "2021-02-11T16:24:57.818374+05:30"
     description: Akka Operator
     digest: 4b0fd4205bd01a8c69752f353e85877422d642e5e3f37b71496464ab760caf5a
     name: akka-operator
@@ -73,7 +73,7 @@ entries:
     version: 0.4.2
   - apiVersion: v2
     appVersion: 0.0.0-1-467c83ad
-    created: "2021-02-11T01:18:01.253227+05:30"
+    created: "2021-02-11T16:24:57.816727+05:30"
     description: Akka Operator in Akka Cloud Platform
     digest: 8ea8b6dabd937d45ac582f60fa6b2ce6ff883b85a9b162e7f0d2ca4bb2b16ec2
     name: akka-operator
@@ -81,4 +81,4 @@ entries:
     urls:
     - charts/akka-operator-0.0.0-1-467c83ad.tgz
     version: 0.0.0-1-467c83ad
-generated: "2021-02-11T01:18:01.251187+05:30"
+generated: "2021-02-11T16:24:57.814235+05:30"
