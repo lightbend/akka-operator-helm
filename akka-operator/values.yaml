@@ -3,8 +3,6 @@
 # Declare variables to be passed into your templates.
 
 defaultAWSRepository: 709825985650.dkr.ecr.us-east-1.amazonaws.com/lightbend/akka-cloud-platform
-defaultGCPRepository: gcr.io/lightbend-public/akka-cloud-platform
-# defaultGCPRepository: eu.gcr.io/bubbly-observer-178213/akka-operator
 image:
   repository: false
   pullPolicy: IfNotPresent
