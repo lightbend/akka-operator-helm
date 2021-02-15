@@ -6,6 +6,6 @@ description: Akka Operator in Akka Cloud Platform
 # Akka Operator
 type: application
 # This is the chart version, which corresponds to the version of the Akka Operator.
-version: 0.4.5-pr413-6d9b1c7
+version: 1.1.0
 # This is the version number of the Akka Operator, being deployed.
-appVersion: 0.4.5-pr413-6d9b1c7
+appVersion: 1.1.0

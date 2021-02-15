@@ -39,6 +39,9 @@ spec:
                   type: string
                   description: 'Image pull policy. One of Always, Never, IfNotPresent. No setting falls back to the container default. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images'
                   pattern: '^Always$|^Never$|^IfNotPresent$'
+                appVersion:
+                  type: string
+                  description: 'Application version of the deployment. Used by rolling update features to distinguish between old and new nodes. Unlike "deployment.kubernetes.io/revision", the appVersion may span multiple "Deployment" resources.'
                 imagePullSecrets:
                   type: array
                   description: 'List of the image pull secrets to be used. More info: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-pod-that-uses-your-secret'
@@ -287,6 +290,40 @@ spec:
                       default: "secureConnectBundle"
                   required:
                     - credentialsSecret
+                roles:
+                  type: array
+                  description: 'Scale by Akka Cluster node role. https://doc.akka.io/docs/akka/current/typed/cluster.html#node-roles'
+                  items:
+                    type: object
+                    description:  |-
+                      A role with a name and what ratio of the replicas that should be used for Pods with this role.
+                      For example, role A with replicasRatio 40 and role B with replicasRatio 60 means that 10
+                      replicas will result in 4 replicas for role A and 6 replicas for role B. Scaling to 15 will
+                      result in 6 for A and 9 for B.
+                      Each role can can optionally have minimum and maximum bounds. When allocating the total number
+                      of replicas to the roles those bounds will be honored if possible, but it is not guaranteed.
+                      The sum of the role replicas will always be equal to the number of total replicas.
+                      If total replicas are less than the sum of replicasMin of all roles the minimum bounds cannot
+                      be satisfied. If the total replicas are greater than the sum of replicasMax of all roles the
+                      maximum bounds cannot be satisfied.
+                    properties:
+                      name:
+                        type: string
+                      replicasRatio:
+                        type: integer
+                        minimum: 0
+                      replicasMin:
+                        type: integer
+                        minimum: 0
+                        default: 1
+                      replicasMax:
+                        type: integer
+                        minimum: 0
+                        default: 1000
+                    required:
+                      - name
+                      - replicasRatio
+                  default: []
               required:
                 - image
             status:
