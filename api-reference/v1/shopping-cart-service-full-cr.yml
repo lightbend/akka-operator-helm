@@ -12,6 +12,7 @@ spec:
   replicas: 3
   image: "docker.io/patriknw/shopping-cart-service:20201124-120910-e6028e0"
   imagePullPolicy: "IfNotPresent"
+  appVersion: "20201124-120910"
   imagePullSecrets:
   - "regcred"
   akkaManagementPort: "8558"
@@ -51,7 +52,7 @@ spec:
   deploymentStrategy:
     rollingUpdate:
       maxSurge: "25%"
-      maxUnavailable: "25%)"
+      maxUnavailable: "25%"
     type: "RollingUpdate"
   resources:
     limits:
@@ -77,3 +78,13 @@ spec:
     usernameKey: "username"
     passwordKey: "password"
     secureConnectBundleKey: "secureConnectBundle"
+  roles:
+  - name: "entity"
+    replicasRatio: 40
+    replicasMin: 2
+    replicasMax: 1000
+  - name: "projection"
+    replicasRatio: 60
+    replicasMin: 1
+    replicasMax: 10
+  resolvedAppVersion: "20201124-120910"

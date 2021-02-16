@@ -120,3 +120,14 @@ rules:
       - delete
       - patch
       - update
+  - apiGroups:
+      - "networking.k8s.io"
+    resources:
+      - ingresses
+    verbs:
+      - get
+      - list
+      - create
+      - delete
+      - patch
+      - update
