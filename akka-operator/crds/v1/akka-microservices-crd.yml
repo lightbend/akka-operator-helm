@@ -93,6 +93,9 @@ spec:
                       type: boolean
                     certificate:
                       type: string
+                    class:
+                      type: string
+                      default: ""
                   description: 'Enable ingress for gRPC'
                   required:
                     - enabled
@@ -104,6 +107,9 @@ spec:
                         type: boolean
                       certificate:
                         type: string
+                      class:
+                        type: string
+                        default: ""
                     description: 'Enable ingress for http'
                     required:
                       - enabled
