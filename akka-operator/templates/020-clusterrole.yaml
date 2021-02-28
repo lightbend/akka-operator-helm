@@ -131,3 +131,14 @@ rules:
       - delete
       - patch
       - update
+  - apiGroups:
+      - "cloud.google.com"
+    resources:
+      - backendconfigs
+    verbs:
+      - get
+      - list
+      - create
+      - delete
+      - patch
+      - update
