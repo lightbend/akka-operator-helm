@@ -6,7 +6,7 @@ image:
   repository: 709825985650.dkr.ecr.us-east-1.amazonaws.com/lightbend/akka-cloud-platform
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.1.5-0-1bcf6fb6-20210302-1255"
+  tag: "1.1.6"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
