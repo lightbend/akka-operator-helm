@@ -131,3 +131,14 @@ rules:
       - delete
       - patch
       - update
+  # The akka-operator must have lease rules to create Roles that grant it ("can't grant what thee don't have")
+  # The operator doesn't operate on the Leases.
+  - apiGroups:
+      - "akka.io"
+    resources:
+      - "leases"
+    verbs:
+      - "get"
+      - "create"
+      - "update"
+      - "list"
