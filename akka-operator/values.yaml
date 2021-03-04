@@ -22,12 +22,6 @@ podAnnotations: {}
 podSecurityContext:
   fsGroup: 2000
 securityContext: {}
-# capabilities:
-#   drop:
-#   - ALL
-# readOnlyRootFilesystem: true
-# runAsNonRoot: true
-# runAsUser: 1000
 
 resources:
   limits:
@@ -38,3 +32,8 @@ resources:
 nodeSelector: {}
 tolerations: []
 affinity: {}
+# valid values:
+# - false (default)
+# - gcp
+provider:
+  name: false

@@ -142,3 +142,18 @@ rules:
       - "create"
       - "update"
       - "list"
+{{- if .Values.provider.name }}
+{{- if eq .Values.provider.name "gcp" }}
+  - apiGroups:
+      - "cloud.google.com"
+    resources:
+      - backendconfigs
+    verbs:
+      - get
+      - list
+      - create
+      - delete
+      - patch
+      - update
+{{- end }}
+{{- end }}
