@@ -29,9 +29,11 @@ spec:
   grpcIngress:
     enabled: true
     certificate: "arn:aws:acm:region:certificate/cert-id"
+    class: "alb"
   httpIngress:
     enabled: true
     certificate: "arn:aws:acm:region:certificate/cert-id"
+    class: "alb"
   configSecret:
     secretName: "additional-config"
   envSecret:
