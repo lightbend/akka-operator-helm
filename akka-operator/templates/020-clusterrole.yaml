@@ -142,8 +142,6 @@ rules:
       - "create"
       - "update"
       - "list"
-{{- if .Values.provider.name }}
-{{- if eq .Values.provider.name "gcp" }}
   - apiGroups:
       - "cloud.google.com"
     resources:
@@ -155,5 +153,3 @@ rules:
       - delete
       - patch
       - update
-{{- end }}
-{{- end }}
