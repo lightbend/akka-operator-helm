@@ -70,6 +70,11 @@ spec:
                   pattern: '^(off)$|^(102[4-9]|10[3-9][0-9]|1[1-9][0-9]{2}|[2-9][0-9]{3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$'
                   default: "off"
                   description: 'HTTP port in the range 1024 - 65535. Disabled by default. This port is exposed as HTTP_PORT environment variable if it is enabled.'
+                prometheusPort:
+                  type: string
+                  pattern: '^(off)$|^(102[4-9]|10[3-9][0-9]|1[1-9][0-9]{2}|[2-9][0-9]{3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$'
+                  default: "off"
+                  description: 'HTTP port to expose metrics for Prometheus to scrape. Must be  in the range 1024 - 65535. Disabled by default. This port is exposed as HTTP_PROMETHEUS_PORT environment variable if it is enabled.'
                 readinessProbe:
                   type: object
                   x-kubernetes-preserve-unknown-fields: true

@@ -20,6 +20,7 @@ spec:
   akkaManagementPort: "8558"
   grpcPort: "8101"
   httpPort: "8080"
+  prometheusPort: "9001"
   readinessProbe:
     httpGet:
       path: "/ready"
