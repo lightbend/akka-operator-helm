@@ -107,6 +107,19 @@ spec:
                     class:
                       type: string
                       default: ""
+                    annotations:
+                      type: object
+                      properties:
+                        ingress:
+                          type: object
+                          description: "Annotations.ingress is an unstructured key value map stored as annotations on the Ingress serving gRPC. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations"
+                          additionalProperties:
+                            type: string
+                        service:
+                          type: object
+                          description: "Annotations.service is an unstructured key value map stored as annotations on the Service proxying the Ingress traffic for gRPC. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations"
+                          additionalProperties:
+                            type: string
                   description: 'Enable ingress for gRPC'
                   required:
                     - enabled
@@ -121,6 +134,19 @@ spec:
                       class:
                         type: string
                         default: ""
+                      annotations:
+                        type: object
+                        properties:
+                          ingress:
+                            type: object
+                            description: "Annotations.ingress is an unstructured key value map stored as annotations on the Ingress serving HTTP. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations"
+                            additionalProperties:
+                              type: string
+                          service:
+                            type: object
+                            description: "Annotations.service is an unstructured key value map stored as annotations on the Service proxying the Ingress traffic for HTTP. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations"
+                            additionalProperties:
+                              type: string
                     description: 'Enable ingress for http'
                     required:
                       - enabled

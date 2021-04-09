@@ -33,10 +33,19 @@ spec:
     enabled: true
     certificate: "arn:aws:acm:region:certificate/cert-id"
     class: "alb"
+    annotations:
+      ingress:
+        alb.ingress.kubernetes.io/auth-on-unauthenticated-request: "authenticate"
   httpIngress:
     enabled: true
     certificate: "arn:aws:acm:region:certificate/cert-id"
     class: "alb"
+    annotations:
+      ingress:
+        alb.ingress.kubernetes.io/ssl-policy: "ELBSecurityPolicy-2016-08"
+      service:
+        alb.ingress.kubernetes.io/auth-on-unauthenticated-request: "authenticate"
+        alb.ingress.kubernetes.io/auth-scope: "openid"
   configSecret:
     secretName: "additional-config"
   envSecret:
