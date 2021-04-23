@@ -48,8 +48,11 @@ spec:
         alb.ingress.kubernetes.io/auth-scope: "openid"
   configSecret:
     secretName: "additional-config"
-  envSecret:
-    secretName: "additional-env"
+  envFrom:
+  - configMapRef:
+      name: "env-configmap"
+  - secretRef:
+      name: "env-secret"
   logbackSecret:
     secretName: "logback"
   secretVolumes:

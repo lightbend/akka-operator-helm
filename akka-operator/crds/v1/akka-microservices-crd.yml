@@ -163,9 +163,16 @@ spec:
                       type: string
                   required:
                     - secretName
+                envFrom:
+                  type: array
+                  description: 'A list of Secret and/or ConfigMap references with entries that will be included as environment variables.'
+                  items:
+                    type: object
+                    x-kubernetes-preserve-unknown-fields: true
+                    description: 'A reference to a ConfigMap or to a Secret that populate the environment variables. More info: https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#configure-all-key-value-pairs-in-a-configmap-as-container-environment-variables'
                 envSecret:
                   type: object
-                  description: 'Name of Secret with entries that will be included as environment variables.'
+                  description: '*DEPRECATED use envFrom instead* Name of Secret with entries that will be included as environment variables.'
                   properties:
                     secretName:
                       type: string
