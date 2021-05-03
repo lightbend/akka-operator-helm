@@ -32,7 +32,7 @@ Now you can install the operator with a classic Helm command (sustituting the `r
 
 ```shell
 helm upgrade -i akka-operator akka-operator-helm/akka-operator \
-  --namespace default \
+  --namespace akka-dev \
   --set provider.name=gcp \
   --set gcp.deployer=false \
   --set reportingSecret=akka-cloud-platform-1-license
