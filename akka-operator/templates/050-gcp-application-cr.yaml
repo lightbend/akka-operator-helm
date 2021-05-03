@@ -14,7 +14,6 @@ metadata:
 spec:
   descriptor:
     type: AkkaCloudPlatform
-    version: {{ .Chart.AppVersion }}
     description: >-
       The Akka Cloud Platform enables developers to quickly build and launch cloud-native microservices on their cloud service provider of choice. Akka Cloud Platform is built on the powerful Akka Platform technology for microservices that are resilient to failure, highly efficient, and operate at any scale. Simple integration paths provide streamlined integration with relevant services in the ecosystem. # Support Basic operator support is provided by Lightbend and is available with a subscription. Full support for Akka and other Lightbend supported products is available via private offers please contact gcp@lightbend.com for additional information.
     maintainers:
