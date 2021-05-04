@@ -9,7 +9,7 @@ image:
   tag: "1.1.18"
 ubbagent:
   image:
-    repository: gcr.io/lightbend-public/akka-cloud-platform/ubbagent
+    repository: gcr.io/cloud-marketplace/lightbend-public/akka-cloud-platform/ubbagent
     tag: "1.1.18"
 imagePullSecrets: []
 nameOverride: ""
@@ -40,3 +40,7 @@ affinity: {}
 # - gcp
 provider:
   name: false
+
+gcp:
+  repository: gcr.io/cloud-marketplace/lightbend-public/akka-cloud-platform
+  deployer: false
