@@ -43,4 +43,4 @@ provider:
 
 gcp:
   repository: gcr.io/cloud-marketplace/lightbend-public/akka-cloud-platform
-  deployer: true
+  deployer: false
