@@ -60,6 +60,9 @@ spec:
     mountPath: "/etc/volume1"
   - secretName: "additional-volume2"
     mountPath: "/etc/volume2"
+  extraVolumeMounts:
+  - mountPath: "/mnt/example"
+    name: "extra-volume-mount"
   javaOptions: "-Dakka.actor.default-blocking-io-dispatcher.thread-pool-executor.fixed-pool-size=10 -Xlog:gc"
   env:
   - name: "DEMO_GREETING"
@@ -104,4 +107,16 @@ spec:
     replicasRatio: 60
     replicasMin: 1
     replicasMax: 10
+  podTemplateSpec:
+    metadata:
+      annotations:
+        my-annotation: "my-value"
+    spec:
+      containers:
+      - command:
+        - "sh"
+        - "-c"
+        - "echo hello"
+        image: "busybox"
+        name: "hello"
   resolvedAppVersion: "20201124-120910"
