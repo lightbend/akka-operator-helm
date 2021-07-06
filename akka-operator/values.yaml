@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 image:
-  repository: 709825985650.dkr.ecr.us-east-1.amazonaws.com/lightbend/akka-cloud-platform
+  # There's no default image. At least an original must be provided ("aws", "gcp", "lighbendcommercial")
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "1.1.20"
@@ -36,10 +36,14 @@ nodeSelector: {}
 tolerations: []
 affinity: {}
 # valid values:
-# - false (default)
+# - aws
 # - gcp
+# - lighbendcommercial
 provider:
-  name: false
+  name: aws
+aws:
+  repository: 709825985650.dkr.ecr.us-east-1.amazonaws.com/lightbend/akka-cloud-platform
 gcp:
   repository: gcr.io/cloud-marketplace/lightbend-public/akka-cloud-platform
-  deployer: false
+lighbendcommercial:
+  repository: cloudsmith.com/lightbend/TODO-USE_REAL_NAME_HERE

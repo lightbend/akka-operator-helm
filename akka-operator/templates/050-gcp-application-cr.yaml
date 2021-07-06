@@ -1,6 +1,5 @@
 {{- if .Values.provider.name }}
 {{- if eq .Values.provider.name "gcp" }}
-{{- if eq (toString .Values.gcp.deployer) "false" }}
 apiVersion: app.k8s.io/v1beta1
 kind: Application
 metadata:
