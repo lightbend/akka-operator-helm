@@ -5,6 +5,7 @@ metadata:
   labels:
     {{- include "akka-operator.labels" . | nindent 4 }}
 rules:
+  # NOTE: Running on a custom cluster doesn't need metrics but granting the roles doesn't harm
   - apiGroups:
       - "metrics.k8s.io"
     resources:
@@ -136,12 +137,12 @@ rules:
   - apiGroups:
       - "akka.io"
     resources:
-      - "leases"
+      - leases
     verbs:
-      - "get"
-      - "create"
-      - "update"
-      - "list"
+      - get
+      - create
+      - update
+      - list
   - apiGroups:
       - "cloud.google.com"
     resources:
