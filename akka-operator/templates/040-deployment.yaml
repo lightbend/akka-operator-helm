@@ -79,13 +79,13 @@ spec:
       labels:
         {{- include "akka-operator.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       serviceAccountName: {{ include "akka-operator.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- if ne .Values.lightbendSubscription.username "false" }}
+      imagePullSecrets:
+        - name: commercial-credentials
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -94,10 +94,9 @@ spec:
           #  1. lightbend commercial (picked when the user provides subscription credentials)
           #  2. GCP's (multiple alternatives)
           #  3. AWS marketplace
-          {{- if .Values.imageCredentials.username }}
-          image: "{{ .Values.imageCredentials.registry }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullSecrets:
-            - name: "commercial-credentials"
+          {{- if ne .Values.lightbendSubscription.username "false" }}
+          image: "{{ .Values.lightbendSubscription.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          ## When downloading from the Lightbend commercial registry, there has to be an imagePullSecret (see below)
           {{- else if and (eq (toString .Values.provider.name) "gcp") (eq (toString .Values.gcp.deployer) "false") }}
           image: "{{ .Values.gcp.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           {{- else }}
