@@ -119,4 +119,5 @@ spec:
         - "echo hello"
         image: "busybox"
         name: "hello"
+  serviceAccount: "my-service-account"
   resolvedAppVersion: "20201124-120910"
