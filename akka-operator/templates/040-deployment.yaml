@@ -90,11 +90,20 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          {{- if and (eq (toString .Values.provider.name) "gcp") (eq (toString .Values.gcp.deployer) "false") }}
+          # There's several possible registries to pull the image from:
+          #  1. lightbend commercial (picked when the user provides subscription credentials)
+          #  2. GCP's (multiple alternatives)
+          #  3. AWS marketplace
+          {{- if .Values.imageCredentials.username }}
+          image: "{{ .Values.imageCredentials.registry }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullSecrets:
+            - name: "commercial-credentials"
+          {{- else if and (eq (toString .Values.provider.name) "gcp") (eq (toString .Values.gcp.deployer) "false") }}
           image: "{{ .Values.gcp.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          {{- else}}
+          {{- else }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           {{- end }}
+
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
