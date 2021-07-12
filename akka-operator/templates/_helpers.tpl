@@ -67,7 +67,7 @@ Create the name of the service account to use
 Create the configjson for a secret with the lightbend commercial credentials
 */}}
 {{- define "imagePullSubscriptionSecret" }}
-{{- if ne .Values.lightbendSubscription.username "false" }}
+{{- if .Values.lightbendSubscription.username }}
 {{- printf "{\"auths\": {\"%s\": {\"auth\": \"%s\"}}}" .Values.lightbendSubscription.registry (printf "%s:%s" .Values.lightbendSubscription.username .Values.lightbendSubscription.password | b64enc) | b64enc }}
 {{- end }}
 {{- end }}
