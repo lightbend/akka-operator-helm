@@ -14,7 +14,7 @@ data:
         # This parameter accepts a base64-encoded JSON service
         # account key. The value comes from the reporting secret.
         encodedServiceAccountKey: $AGENT_ENCODED_KEY
-          
+
 
     # The metrics section defines the metric that will be reported.
     # Metric names should match verbatim the identifiers created
@@ -82,7 +82,7 @@ spec:
       serviceAccountName: {{ include "akka-operator.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      {{- if ne .Values.lightbendSubscription.username "false" }}
+      {{- if .Values.lightbendSubscription.username }}
       imagePullSecrets:
         - name: commercial-credentials
       {{- else }}
@@ -99,9 +99,9 @@ spec:
           #  1. lightbend commercial (picked when the user provides subscription credentials)
           #  2. GCP's (multiple alternatives)
           #  3. AWS marketplace
-          {{- if ne .Values.lightbendSubscription.username "false" }}
+          {{- if .Values.lightbendSubscription.username }}
           image: "{{ .Values.lightbendSubscription.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          ## When downloading from the Lightbend commercial registry, there has to be an imagePullSecret (see below)
+          ## When downloading from the Lightbend commercial registry, there has to be an imagePullSecret (see above)
           {{- else if and (eq (toString .Values.provider.name) "gcp") (eq (toString .Values.gcp.deployer) "false") }}
           image: "{{ .Values.gcp.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           {{- else }}
